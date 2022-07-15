@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  price: 1
+  price: MyString
 
 two:
   name: MyString
-  price: 1
+  price: MyString
