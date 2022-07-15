@@ -12,7 +12,7 @@
     <% @cart_items.each do |cart_item| %>
       <tr>
         <td><%= cart_item.item.item_name %></td>
-        <td><%= cart_item.item.with_tax_price %></td>
+        <td><%= cart_item.item.with_tax_price %></td>　<!--仮にwith_tax_priceをcart_item.rbに記載した場合はitemが余計-->
         <td><%= render 'form', cart_item: cart_item , item: cart_item.item %></td>
         <td><%= cart_item.subtotal %></td>
         <td><%= link_to '削除する', cart, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>

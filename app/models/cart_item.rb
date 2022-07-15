@@ -2,7 +2,7 @@ class CartItem < ApplicationRecord
   belongs_to :user 
   belongs_to :cart
   
-  # 税込み単価の算出
+  # 税込み単価の算出,item.rbに記載が
   def with_tax_price
       (price * 1.1).floor
   end
