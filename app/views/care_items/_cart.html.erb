@@ -1,0 +1,23 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+　　　<th>小計</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= cart_item.item.item_name %></td>
+        <td><%= cart_item.item.with_tax_price %></td>
+        <td><%= render 'form', cart_item: cart_item , item: cart_item.item %></td>
+        <td><%= cart_item.subtotal %></td>
+        <td><%= link_to '削除する', cart, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %></td>
+        <% @total +=  cart_item.subtotal %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
