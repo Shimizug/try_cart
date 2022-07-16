@@ -39,7 +39,7 @@ before_action :authenticate_user!
 
   private
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :quantity)
+    params.require(:cart_item).permit(:item_id, :amount)
   end
 
 end
