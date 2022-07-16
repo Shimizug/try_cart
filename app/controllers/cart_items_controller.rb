@@ -14,8 +14,8 @@ before_action :authenticate_user!
 
   def index
     @cart_item = Cartitem.new   #この記述はitem_detailのページにも記載,新規投稿のために使用
-    @cart_items = current_customer.cart_items #ログイン中のユーザに結びついたカートアイテムが欲しい
-    @total    #合計金額の算出に使用する変数
+    @cart_items = current_user.cart_items #ログイン中のユーザに結びついたカートアイテムが欲しい
+    @total = 0   #合計金額の算出に使用する変数
   end
 
   def create
@@ -23,7 +23,8 @@ before_action :authenticate_user!
     @cart_item.user_id = current_user.id
     if Item.find_by(item.id:item_id )
         #元々の個数と新たな個数の合算をここに作成
-      redirect_to cart_items_path
+      @cart_item.save
+      redirect_to cart_items_path #投稿したらカートに遷移？
     else
       @cart_item.save
       redirect_to cart_items_path
