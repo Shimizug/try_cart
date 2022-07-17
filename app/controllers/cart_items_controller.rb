@@ -22,7 +22,7 @@ before_action :authenticate_user!
     @cart_item = Cartitem.new(cart_item_params)
     @cart_item.user_id = current_user.id
     if current_user.cart_items.find_by(item_id :cart_item_params[:item_id] ) #カート内に同一商品が存在するか調べる
-      @cart_item.amount = @cart_amount.amount + cart_item_params[:amount]
+      @cart_item.amount = @cart_amount.amount + (cart_item_params[:amount]).to_i
       @cart_item.update(cart_item_params)
       redirect_to cart_items_path #投稿したらカートに遷移？
     else
