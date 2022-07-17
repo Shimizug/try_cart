@@ -21,9 +21,9 @@ before_action :authenticate_user!
   def create
     @cart_item = Cartitem.new(cart_item_params)
     @cart_item.user_id = current_user.id
-    if Item.find_by(item.id:item_id )
-        #元々の個数と新たな個数の合算をここに作成
-      @cart_item.save
+    if current_user.cart_items.find_by(item_id :cart_item_params[:item_id] ) #カート内に同一商品が存在するか調べる
+      @cart_item.amount = @cart_amount.amount + cart_item_params[:amount]
+      @cart_item.update(cart_item_params)
       redirect_to cart_items_path #投稿したらカートに遷移？
     else
       @cart_item.save
