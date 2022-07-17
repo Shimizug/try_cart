@@ -1,0 +1,11 @@
+
+<%= form_with model: cart_item,  url: update_cart_item_path(cart_item.id), method: :patch, local:true do |f| %>
+  <div class="form-group">
+    <%= f.hidden_field :item_id, value: item.id %>  <!--cart.itemに今回のページのitemのidを代入したい-->
+  </div>
+  <div class="form-group">
+    <%= f.select :amount, *[1..9] class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "変更" class: 'btn btn-success' %>
+  </div>
